@@ -8,7 +8,7 @@ $navbar-default-brand-color: #1ab394;
 
 
 //Background body
-$body-bg: #2f4050;
+$body-bg: #f3f3f4;
 
 //Paginate
 $link-color: #cb2827;
@@ -26,6 +26,7 @@ $ibox-content-bg: white;  // IBox Background content
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
 
 
@@ -81,7 +82,7 @@ $ibox-content-bg: white;  // IBox Background content
   border-image: none;
   border-style: solid solid none;
   border-width: 1px 0px;
-  border-radius: 5px;
+
 }
 
 .ibox-content h1, .ibox-content h2, .ibox-content h3, .ibox-content h4, .ibox-content h5,
@@ -91,6 +92,10 @@ $ibox-content-bg: white;  // IBox Background content
 
 
 /* AGILE BOARD */
+.agile-board {
+    border-radius: 5px;
+}
+
 .sortable-list {
   padding: 10px 0;
 }
@@ -160,6 +165,29 @@ h5 {
   margin-top: 5px;
   font-weight: 600;
 }
+
+.ibox-content h1,
+.ibox-content h2,
+.ibox-content h3,
+.ibox-content h4,
+.ibox-content h5,
+.ibox-title h1,
+.ibox-title h2,
+.ibox-title h3,
+.ibox-title h4,
+.ibox-title h5 {
+  margin-top: 5px;
+}
+
+.ibox-title h5 {
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 0 7px;
+  padding: 0;
+  text-overflow: ellipsis;
+  float: left;
+}
+
 
 /* UI Sortable */
 .ui-sortable .ibox-title {
@@ -255,6 +283,7 @@ h5 {
   padding: 10px 20px;
   position: relative;
   right: 0;
+  width: 100%;
   
 }
 
@@ -265,9 +294,6 @@ h5 {
 .navbar {
     border-radius: 0px;
     padding: 0px;
-}
-.nav > li > a {
-  font-weight: 600;
 }
 
 .nav.navbar-right > li > a {
@@ -285,20 +311,20 @@ h5 {
 }
 
 .navbar-toggle {
-  background-color: white;
+  background-color: #fff;
 }
-.navbar-default .navbar-toggle {
-    border-color: none;
+.navbar-default .navbar-toggle:focus
+{
+  background-color: #fff;
 }
+
 .navbar-default .navbar-toggle:hover
-, .navbar-default .navbar-toggle:focus
 {
   color: #fff;
   background-color: #2f4050;
 }
 
-.navbar-default .navbar-toggle:hover .icon-bars
-, .navbar-default .navbar-toggle:focus .icon-bars
+.navbar-default .navbar-toggle:hover .icon-bar
 {
   background-color: #fff;
 }

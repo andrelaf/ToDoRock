@@ -1,9 +1,9 @@
 class Task < ActiveRecord::Base
   belongs_to :boards
-  
-  #enum status: { to_do: 1, in_progress: 2, to_verify: 3, done: 4 }
-  #enum priority: { low: 1, average: 2, high: 3 }
-  
+  belongs_to :user
+  enum status: { ToDo: 1, InProgress: 2, ToVerify: 3, Done: 4 }
+  enum priority: { Low: 1, Medium: 2, High: 3 } 
+
   validates :title, :priority, :status, :board_id,  presence: true
 
 end

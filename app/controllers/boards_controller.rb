@@ -1,6 +1,9 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user! 
+  before_action :correct_user, only: [:edit, :update, :destroy]  
+  
+  
   # GET /boards
   # GET /boards.json
   def index
@@ -14,7 +17,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/new
   def new
-    @board = Board.new
+     @board = current_user.boards.build
   end
 
   # GET /boards/1/edit
@@ -24,8 +27,7 @@ class BoardsController < ApplicationController
   # POST /boards
   # POST /boards.json
   def create
-    @board = Board.new(board_params)
-
+    @board = current_user.boards.build(board_params)
     respond_to do |format|
       if @board.save
         format.html { redirect_to @board, notice: 'Board was successfully created.' }
@@ -71,4 +73,11 @@ class BoardsController < ApplicationController
     def board_params
       params.require(:board).permit(:title, :public)
     end
+    
+     # Vefify correct user 
+    def correct_user
+      @board = current_user.boards.find_by(id: params[:id])
+      redirect_to boards_path, notice: "Not authorized to edit this board" if @board.nil?
+    end
+    
 end

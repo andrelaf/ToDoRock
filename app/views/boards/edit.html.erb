@@ -1,6 +1,18 @@
-<h1>Editing Board</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
+ <div class="wrapper wrapper-content animated fadeInRight">
+   <div class="row">
+    <div class="col-lg-6">
+       <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2>Editing Board</h2>
+          </div>
+          <div class="panel-body">
+             <%= render 'form', :locals => {:action => "Edit Board"} %>
+          </div>
+           <div class="panel-footer">
+                <%= link_to 'Show', @board %> |
+                <%= link_to 'Back', boards_path, class: "btn btn-sm btn-white" %>
+            </div>
+        </div>  
+    </div>
+</div>
+</div>

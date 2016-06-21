@@ -11,23 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control"  %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :priority %><br>
-    <%= f.number_field :priority %>
+    <%= f.select :priority, options_for_select(Task.priorities.map {|k, v| [k.humanize.capitalize, v]}), {}, { class: 'form-control'} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.select :status, options_for_select(Task.statuses.map {|k, v| [k.humanize.capitalize, v]}), {}, { class: 'form-control'} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :board_id %><br>
-    <%= f.number_field :board_id %>
+    <%= f.collection_select :board_id, Board.order(:title),:id,:title, {prompt: "Select a board / project"}, {class: "form-control"} %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+  <%= f.submit locals[:action], class: "btn btn-primary" %>
 <% end %>

@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user! 
+  before_action :correct_user, only: [:edit, :update, :destroy]  
+  
   # GET /tasks
   # GET /tasks.json
   def index
@@ -14,7 +16,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+      @task = current_user.tasks.build
   end
 
   # GET /tasks/1/edit
@@ -24,8 +26,7 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
-
+    @task = current_user.tasks.build(task_params)
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -71,4 +72,11 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :priority, :status, :board_id)
     end
+    
+    # Vefify correct user  
+    def correct_user
+      @task = current_user.tasks.find_by(id: params[:id])
+      redirect_to tasks_path, notice: "Not authorized to edit this task" if @task.nil?
+    end
+    
 end
