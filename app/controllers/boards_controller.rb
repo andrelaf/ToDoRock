@@ -71,7 +71,7 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:title, :public)
+      params.require(:board).permit(:title, :public, :name)
     end
     
      # Vefify correct user 

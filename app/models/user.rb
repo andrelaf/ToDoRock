@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
     has_many :tasks
     has_many :boards
     
-     validates :name,  presence: true
+    validates :name,  presence: true
 end
