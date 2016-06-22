@@ -1,5 +1,5 @@
 class Board < ActiveRecord::Base
       has_many :tasks
       belongs_to :user
-      validates :title, :public, presence: true
+      validates :title,  presence: true
 end

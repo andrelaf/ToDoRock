@@ -17,13 +17,17 @@
          <% if user_signed_in? %>
             <li><%= link_to "My Boards", boards_path %></li>
             <li><%= link_to "My Tasks", tasks_path %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+             <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li>
+            <%= link_to  destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>Logout
+            <% end %>
+            </li>
+           
          <% else %>
             <li><%= link_to "Login", new_user_session_path %></li>
            <li><%= link_to "Sign Up", new_user_registration_path %></li>
          <% end %>
-        <li><%= link_to "Help", home_help_path %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :tasks
   resources :boards
-  get 'home/agile_board'
-
-  get 'home/help'
-
+  post 'agile_board' => 'home#agile_board' 
+  
+  
+  post 'tasks_create' => 'tasks#task_create' 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

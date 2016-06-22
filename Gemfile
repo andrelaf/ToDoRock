@@ -30,6 +30,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Authentication solution for Rails
 gem 'devise', '~> 3.5', '>= 3.5.6'
 
+#Paginate
+gem 'will_paginate', '~> 3.1'
+
+#Style Bootstrap WillPaginate
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

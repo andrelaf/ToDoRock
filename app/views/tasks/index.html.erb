@@ -5,6 +5,7 @@
             <div class="ibox-title">
                 <h2>My Tasks</h2>
             </div>
+             <p id="notice"><%= notice %></p>
             <div class="ibox-content">
               <table class="table">
                 <thead>
@@ -26,16 +27,21 @@
                       <td><%= task.status %></td>
                       <td><%= task.board_id %></td>
                       <td><%= task.user.name %></td>
-                      <td><%= link_to 'Show', task %></td>
-                      <td><%= link_to 'Edit', edit_task_path(task) %></td>
-                      <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      <th><%= task.created_at.strftime("%F") + %{ - } + task.created_at.strftime("%T")  %></th>
+                      <td><%= link_to 'Show', task, class: "btn btn-w-m btn-success" %></td>
+                      <td><%= link_to 'Edit', edit_task_path(task), class: "btn btn-w-m btn-warning" %></td>
+                      <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-w-m btn-danger" %></td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
               </br>
               <%= link_to 'New Task', new_task_path, class: "btn btn-primary" %>
+             <div class="center">
+               <%= will_paginate @tasks, renderer: BootstrapPagination::Rails %>
+               </div>
             </div>
+             
           </div>
         </div>
       </div>

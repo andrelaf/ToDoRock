@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   # GET /tasks/1
@@ -61,6 +61,21 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  def task_create
+    @task = current_user.tasks.build(task_params)
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to root_url, notice: 'Task was successfully created.' }
+        format.json { render root_url, status: :created, location: @task }
+      else
+        format.html { render root_url}
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

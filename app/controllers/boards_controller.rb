@@ -7,7 +7,7 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+     @boards = current_user.boards.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   # GET /boards/1
