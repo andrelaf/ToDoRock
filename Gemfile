@@ -8,6 +8,10 @@ gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
 # Use SCSS for stylesheets Bootstrap 3
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
+# Helpers to generate a Twitter Bootstrap style navbar
+#gem 'bootstrap-navbar', '~> 2.2', '>= 2.2.4'
+
 #Fonts and stylesheets as a Rails
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.0'
 

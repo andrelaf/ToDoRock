@@ -39,19 +39,25 @@
                     <h3>To-do</h3>
                     <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>
 
-                    <%= form_tag("/agile_board", id: 'board_form') do |f| %> 
+                    <%= form_tag("/agile_board", method: :get, id: 'board_form') do |f| %> 
                         <%= select_tag 'board_id', options_from_collection_for_select(@boards, 'id', 'title',  session[:board_id]), prompt: "Select Board", class: "form-control", onchange: "$('#board_form').submit();" %>
                     <% end %>
                     
-                    <ul class="sortable-list connectList agile-list">
+                    <ul id="ToDo" class="sortable-list connectList agile-list">
                         <% @tasks.each do |task| %>
                             <% if task.status == "ToDo" %>
-                           		<li class="<%= color_task_priority task.priority %>-element">
-                               <%= task.title %>
+                           		<li id="<%= task.id %>" class="<%= color_task_priority task.priority %>-element">
+                               <p class="label label-<%= color_label_priority task.priority %> pull-right"><i class="fa fa-exclamation"> </i> <%= task.priority.humanize %></p></br>
+                              <%= task.title %>
                                 <div class="agile-detail">
-                                    <a href="#" class="pull-right btn btn-xs btn-white"><%= task.priority %></a>
+                                    <% if task.user == current_user %>
+                                        <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right btn btn-xs btn-outline btn-danger"  do %>
+                                            <i class="fa fa-trash"></i>
+                                        <% end %>
+                                    <% end %>
                                     <i class="fa fa-clock-o"></i>  <%= task.created_at.to_s(:db) %></br>
-                                    <i class="fa fa-user"> </i> <%= task.user.name %>
+                                    <i class="fa fa-user"> </i> <%= task.user.name %></br>
+                                   
                             </li>
                             <% end %>
                         <% end %>
@@ -64,14 +70,19 @@
                 <div class="ibox-content agile-board">
                     <h3>In Progress</h3>
                     <!--<p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
-                    <ul class="sortable-list connectList agile-list">
+                    <ul id="InProgress" class="sortable-list connectList agile-list">
                         <% @tasks.each do |task| %>
                             <% if task.status == "InProgress" %>
-                           	<li class="<%= color_task_priority task.priority %>-element">
+                           	<li id="<%= task.id %>" class="<%= color_task_priority task.priority %>-element">
+                                <p class="label label-<%= color_label_priority task.priority %> pull-right"><i class="fa fa-exclamation"> </i> <%= task.priority.humanize %></p></br>
                                <%= task.title %>
                                 <div class="agile-detail">
-                                     <a href="#" class="pull-right btn btn-xs btn-white"><%= task.priority %></a>
-                                   <i class="fa fa-clock-o"></i>  <%= task.created_at.to_s(:db) %></br>
+                                     <% if task.user == current_user %>
+                                        <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right btn btn-xs btn-outline btn-danger"  do %>
+                                            <i class="fa fa-trash"></i>
+                                        <% end %>
+                                    <% end %>
+                                    <i class="fa fa-clock-o"></i>  <%= task.created_at.to_s(:db) %></br>
                                     <i class="fa fa-user"> </i> <%= task.user.name %>
                                 </div>
                             </li>
@@ -86,13 +97,18 @@
                 <div class="ibox-content agile-board">
                     <h3>To Verify</h3>
                     <!--<p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
-                    <ul class="sortable-list connectList agile-list">
+                    <ul id="ToVerify" class="sortable-list connectList agile-list">
                         <% @tasks.each do |task| %>
                             <% if task.status == "ToVerify" %>
-                           	<li class="<%= color_task_priority task.priority %>-element">
+                           	<li id="<%= task.id %>" class="<%= color_task_priority task.priority %>-element">
+                                <p class="label label-<%= color_label_priority task.priority %> pull-right"><i class="fa fa-exclamation"> </i> <%= task.priority.humanize %></p></br>
                                <%= task.title %>
                                 <div class="agile-detail">
-                                     <a href="#" class="pull-right btn btn-xs btn-white"><%= task.priority %></a>
+                                    <% if task.user == current_user %>
+                                        <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right btn btn-xs btn-outline btn-danger"  do %>
+                                            <i class="fa fa-trash"></i>
+                                        <% end %>
+                                    <% end %>
                                    <i class="fa fa-clock-o"></i>  <%= task.created_at.to_s(:db) %></br>
                                      <i class="fa fa-user"> </i> <%= task.user.name %>
                                 </div>
@@ -108,14 +124,19 @@
                 <div class="ibox-content agile-board">
                     <h3>Done</h3>
                     <!--<p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
-                    <ul class="sortable-list connectList agile-list">
+                    <ul id="Done" class="sortable-list connectList agile-list">
                       <% @tasks.each do |task| %>
                             <% if task.status == "Done" %>
-                           	<li class="<%= color_task_priority task.priority %>-element">
+                           	<li id="<%= task.id %>" class="<%= color_task_priority task.priority %>-element">
+                                <p class="label label-<%= color_label_priority task.priority %> pull-right"><i class="fa fa-exclamation"> </i> <%= task.priority.humanize %></p></br>
                                <%= task.title %>
                                 <div class="agile-detail">
-                                    <a href="#" class="pull-right btn btn-xs btn-white"><%= task.priority %></a>
-                                   <i class="fa fa-clock-o"></i>  <%= task.created_at.to_s(:db) %></br>
+                                    <% if task.user == current_user %>
+                                        <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right btn btn-xs btn-outline btn-danger"  do %>
+                                            <i class="fa fa-trash"></i>
+                                        <% end %>
+                                    <% end %>
+                                    <i class="fa fa-clock-o"></i>  <%= task.created_at.to_s(:db) %></br>
                                      <i class="fa fa-user"> </i> <%= task.user.name %>
                                 </div>
                             </li>
@@ -134,14 +155,54 @@
 
 
     $(function() {
-
-        $(".sortable-list").sortable({
-            connectWith: ".connectList"
-        }).disableSelection();
-        
-
+    
+     $(".sortable-list").sortable({
+         connectWith: ".connectList",
+         receive: function(e,ui) {
+          $(this).sortable('serialize');
+          var status = e.target.id;
+          
+          var id = ui.item.context.id;
+          $.ajax({
+            type  : "POST",
+            url   : "/toogle_status_task/" + id,
+            data: {task: { status: status }},
+            dataType: "json",
+            success: function (data) {
+               
+               
+               toastr.options = {
+                      "closeButton": true,
+                      "debug": false,
+                      "progressBar": true,
+                      "positionClass": "toast-top-right",
+                      "onclick": null,
+                      "showDuration": "400",
+                      "hideDuration": "1000",
+                      "timeOut": "7000",
+                      "extendedTimeOut": "1000",
+                      "showEasing": "swing",
+                      "hideEasing": "linear",
+                      "showMethod": "fadeIn",
+                      "hideMethod": "fadeOut"
+                    }
+               
+               toastr.success('Change status task for: ' + data.status + '\n' + 'Task Title: ' + data.title )
+               
+               
+            },
+            error: function () {
+               toastr.warning('Job status can not be changed' )
+            }
+          }); 
+        }  
+     }).disableSelection();
+     
+     
     });
 
 </script>
 
 <% end %>
+
+  

@@ -13,4 +13,23 @@ module HomeHelper
             "info"
         end
     end
+    
+    def color_label_priority(priority)
+     case priority
+            when "Low"
+            "primary"
+            when "Normal"
+            "success"
+            when "High"
+            "warning"
+            when "Blocking"
+            "danger"
+            else
+            "info"
+        end
+    
+    
+    
+    end
+    
 end

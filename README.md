@@ -1,24 +1,18 @@
+# todorock
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+> Access to application: http://todorockapp.herokuapp.com/
 
+## Description
+Welcome to todorock, a task management application.
 
-Welcome to your Rails project on Cloud9 IDE!
+## Features
+* You can create public or private boards, for adding tasks.
+* Only logged in users can create tasks and boards.
+* You can create tasks with title, priority, status, and adds it to a board.
+* The status of a task can be: To-do, In Progress, To Verify and Done
+* The priority of a task can be: Low, Normal, High and Blocking
+* Users not logged in, they can not see private boards
+* Para alterar o status de uma tarefa, o usuario precisa arrastar a tarefa para o quadro que contem o status desejado.
 
-To get started, just do the following:
-
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://todorock-andrelaf.c9users.io/).
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+## Support 
+* E-mail Contact:  andre.amorim.si@gmail.com
