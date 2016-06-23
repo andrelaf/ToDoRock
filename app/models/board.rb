@@ -4,4 +4,8 @@ class Board < ActiveRecord::Base
       validates :title,  presence: true
       validates :title, length: { minimum: 10 }
       validates :title, length: { maximum: 500 }
+      
+      def concat_title(model)
+            #{model.title} + #{"Public"}
+      end
 end

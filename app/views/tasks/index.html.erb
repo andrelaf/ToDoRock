@@ -26,7 +26,7 @@
                       <td><%= task.title %></td>
                       <td><%= task.priority %></td>
                       <td><%= task.status %></td>
-                      <td><%= task.boards.title %></td>
+                      <td><%= task.board.title %></td>
                       <td><%= task.user.name %></td>
                       <th><%= task.created_at.strftime("%F") + %{ - } + task.created_at.strftime("%T")  %></th>
                       <td><%= link_to 'Show', task, class: "btn btn-w-m btn-success" %></td>

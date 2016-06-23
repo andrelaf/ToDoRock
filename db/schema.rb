@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621142239) do
+ActiveRecord::Schema.define(version: 20160621141308) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "title"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160621142239) do
     t.boolean  "active",     default: true, null: false
   end
 
-  add_index "tasks", ["board_id"], name: "index_tasks_on_board_id"
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: :cascade do |t|
