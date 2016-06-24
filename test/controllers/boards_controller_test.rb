@@ -3,6 +3,12 @@ require 'test_helper'
 class BoardsControllerTest < ActionController::TestCase
   setup do
     @board = boards(:one)
+    @update = {
+      title: "todorock",
+      public: "true",
+      user_id: 1,
+      active: true
+    }
   end
 
   test "should get index" do
@@ -18,7 +24,7 @@ class BoardsControllerTest < ActionController::TestCase
 
   test "should create board" do
     assert_difference('Board.count') do
-      post :create, board: { public: @board.public, title: @board.title }
+      post :create, board: @update
     end
 
     assert_redirected_to board_path(assigns(:board))
@@ -35,7 +41,7 @@ class BoardsControllerTest < ActionController::TestCase
   end
 
   test "should update board" do
-    patch :update, id: @board, board: { public: @board.public, title: @board.title }
+    patch :update, id: @board, board: @update  
     assert_redirected_to board_path(assigns(:board))
   end
 

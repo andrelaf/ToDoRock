@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: Add Buttom in View
   priority: 1
   status: 1
   board_id: 1
 
 two:
-  title: MyString
+  title: Add Function Ajax
   priority: 1
   status: 1
   board_id: 1

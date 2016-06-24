@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class BoardTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  fixtures :boards
+  test "board attributes must not be empty" do
+   board = Board.new
+   assert board.invalid?
+   assert board.errors[:title].any?
+  end
 end

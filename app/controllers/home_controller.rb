@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def agile_board
     
      if user_signed_in?
-      @boards = current_user.boards.order("created_at DESC")
+      @boards = Board.where("user_id = ? or public = ?", current_user.id, true)
      else
       @boards = Board.where(public: true)
      end
