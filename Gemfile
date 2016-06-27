@@ -54,6 +54,8 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  #Making tests easy on the fingers and eyes
+  gem 'shoulda', '~> 3.5'
 end
 
 group :development do

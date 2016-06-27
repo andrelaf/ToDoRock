@@ -1,12 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+task1:
+  id: 1
   title: Add Buttom in View
   priority: 1
   status: 1
   board_id: 1
 
-two:
+task2:
+  id: 2
   title: Add Function Ajax
   priority: 1
   status: 1

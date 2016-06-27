@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BoardsControllerTest < ActionController::TestCase
   setup do
-    @board = boards(:one)
+    @board = boards(:todorock)
     @update = {
       title: "todorock",
       public: "true",

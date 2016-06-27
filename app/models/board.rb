@@ -1,8 +1,8 @@
 class Board < ActiveRecord::Base
       has_many :tasks
       belongs_to :user
-      validates :title,  presence: true
-      validates :title, length: { minimum: 10 }
-      validates :title, length: { maximum: 500 }
+      validates_presence_of :title
+      validates_length_of :title, :minimum => 10
+      validates_length_of :title, :maximum => 200
 
 end

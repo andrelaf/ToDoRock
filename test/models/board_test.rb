@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class BoardTest < ActiveSupport::TestCase
-  fixtures :boards
-  test "board attributes must not be empty" do
-   board = Board.new
-   assert board.invalid?
-   assert board.errors[:title].any?
-  end
+    should validate_presence_of(:title)
+   
+    should have_many(:tasks)
+    should belong_to(:user)
+    
+    should validate_length_of(:title).is_at_least(10).is_at_most(200)
 end

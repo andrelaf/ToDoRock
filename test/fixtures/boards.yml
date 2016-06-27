@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 todorock:
+  id: 1
   title: ToDoRock
   public: false
 
 todorockpublic:
+  id: 2
   title: ToDoRockPublic
   public: true
