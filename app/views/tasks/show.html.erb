@@ -5,7 +5,11 @@
           <div class="panel-heading">
             <h2> Board: <%= @task.title %> </h2>
           </div>
-          <p id="notice"><%= notice %></p>
+           <% unless  notice.blank? %>
+            <div class="alert alert-success">
+                <p id="notice"><%= notice %></p>
+            </div>
+            <% end %>
           <div class="panel-body">
             <p>
               <strong>Title:</strong>

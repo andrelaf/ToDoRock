@@ -5,7 +5,11 @@
             <div class="ibox-title">
                 <h2>My Boards</h2>
             </div>
-             <p id="notice"><%= notice %></p>
+            <% unless notice.blank? %>
+                <div class="alert alert-success">
+                    <p id="notice"><%= notice %></p>
+                </div>
+            <% end %>
             <div class="ibox-content">
                 <table class="table">
                     <thead>
